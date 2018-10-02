@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<title>Weather</title>
+
+</head>
+
+
+<body>
+<div id="weather">
+<h1>City : <span id="city"></h1>
+<h4>Weather Forecast :</h4>
+<table>
+<tr>
+<th><p> Monday<span></p></th>
+<th><p> Tuesday<span></p></th>
+<th><p> Wednesday<span></p></th>
+<th><p> Thursday<span></p></th>
+<th><p> Friday<span></p></th>
+</tr>
+<td><p>Temperature: <span id="temperature"></p></td>
+<td><p>Temperature: <span id="temperature2"></p></td>
+<td><p>Temperature: <span id="temperature3"></p></td>
+<td><p>Temperature: <span id="temperature4"></p></td>
+<td><p>Temperature: <span id="temperature5"></p></td>
+</tr>
+<tr>
+<td><p>Humidity: <span id ="humidity"></p></td>
+<td><p>Humidity: <span id ="humidity2"></p></td>
+<td><p>Humidity: <span id ="humidity3"></p></td>
+<td><p>Humidity: <span id ="humidity4"></p></td>
+<td><p>Humidity: <span id ="humidity5"></p></td>
+
+
+</tr>
+<tr>
+<td><p>Wind : <span id="wind"></p></td>
+<td><p>Wind : <span id="wind2"></p></td>
+<td><p>Wind : <span id="wind3"></p></td>
+<td><p>Wind : <span id="wind4"></p></td>
+<td><p>Wind : <span id="wind5"></p></td>
+
+
+</tr>
+</table>
+</div>
+
+<script>
+var pullRequest=new XMLHttpRequest();
+pullRequest.open("GET","http://api.openweathermap.org/data/2.5/forecast?q=Sacramento&appid=8b498d45e1ad178dc3243dc536d9ee0c", false);
+pullRequest.send(null);
+var weatheResponse = JSON.parse(pullRequest.response);
+console.log(weatheResponse);
+
+//city value or data
+var cityresp = weatheResponse.city.name + " <p>";
+
+//column1 values or data
+var tempresp = Math.floor(weatheResponse.list[0].main.temp * 9/5 - 459.67) + " F" + " <p>";
+var humid = weatheResponse.list[0].main.humidity + " <p>";
+var wind= weatheResponse.list[0].wind.speed + " mph" + " <p>";
+
+//column2 values or data
+var temp2 = Math.floor(weatheResponse.list[1].main.temp * 9/5 - 459.67) + " F" + " <p>";
+var humid2 = weatheResponse.list[1].main.humidity + " <p>";
+var wind2= weatheResponse.list[1].wind.speed + " mph" + " <p>";
+
+
+//column3 values or data
+var xyzResult = Math.floor(weatheResponse.list[2].main.temp * 9/5 - 459.67) + " F" + " <p>";
+var humid3 = weatheResponse.list[2].main.humidity + " <p>";
+var wind3= weatheResponse.list[2].wind.speed + " mph" + " <p>";
+console.log("wind3 result vachinda??", wind3);
+
+
+var temp3 = Math.floor(weatheResponse.list[3].main.temp * 9/5 - 459.67) + " F" + " <p>";
+var humid4 = weatheResponse.list[3].main.humidity + " <p>";
+var wind4= weatheResponse.list[4].wind.speed + " mph" + " <p>";
+console.log("wind4 result vachinda??", wind4);
+
+var temp4 = Math.floor(weatheResponse.list[4].main.temp * 9/5 - 459.67) + " F" + " <p>";
+var humid5 = weatheResponse.list[4].main.humidity + " <p>";
+var wind5= weatheResponse.list[5].wind.speed + " mph" + " <p>";
+console.log("wind5 result vachinda??", wind5);
+
+
+
+function displayWeather(id, res) {
+
+document.getElementById(id).innerHTML=res;
+}
+
+displayWeather("city", cityresp);
+displayWeather("temperature",tempresp);
+displayWeather("humidity", humid);
+displayWeather("wind", wind);
+
+displayWeather("temperature2", temp2);
+displayWeather("humidity2", humid2);
+displayWeather("wind2", wind2);
+
+
+displayWeather("temperature3", xyzResult);
+displayWeather("humidity3", humid3);
+displayWeather("wind3", wind3);
+
+displayWeather("temperature4", temp3);
+displayWeather("humidity4", humid4);
+displayWeather("wind4", wind4);
+
+displayWeather("temperature5", temp4);
+displayWeather("humidity5", humid5);
+displayWeather("wind5", wind5);
+
+
+</script>
+
+</body>
+
+</html>
