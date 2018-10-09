@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+ <head>
+ 
+  <script type="text/javascript" src="./weather.js"></script>
+  <script src="./jquery-3.3.1.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+<script type="text/javascript">
+<!--
+
+//-->
+</script>
+ </head>
+ <body>
+  
+  <h2><center>Weather Report</center></h2><center><input type="button" value="Refresh" onclick="getLocation()"></center>
+  <hr>
+ 	<center>
+
+
+	 
+  <BR>
+<div id="weather_data_id" style="font-family: Times New Roman, Times, serif; display:none">
+   <table  style="font-family: Times New Roman, Times, serif;">
+		
+	<tr>
+		<td>City</td>
+		<td> </td>
+		<td id="city"></td>
+	</tr>
+	<tr>
+		<td>Country Code</td>
+		<td> </td>
+		<td id="country"></td>
+	</tr>
+	<tr>
+		<td id="main">Coluds </td>
+		<td ></td>
+		<td id="detailInfo"></td>
+	</tr>
+	
+	<tr>
+		<td>Weather</td>
+		<td> </td>
+		<td>
+		<table style="padding:10px;">
+		<tr>
+			<td>Temp</td>
+			<td> </td>
+			<td id="temp"></td>
+		</tr>
+		<tr>
+			<td>Humidity</td>
+			<td> </td>
+			<td id="humidity"></td>
+		</tr>
+		<tr>
+			<td>Max Temp</td>
+			<td> </td>
+			<td id="max_Temp"></td>
+		</tr>
+		<tr>
+			<td>Min Temp</td>
+			<td> </td>
+			<td id="min_Temp"></td>
+		</tr>
+		</table>
+				
+		</td>
+	</tr>
+
+	<tr>
+		<td>Wind</td>
+		<td> </td>
+		<td>
+		<table style="padding:10px;">
+		<tr>
+			<td>deg</td>
+			<td> </td>
+			<td id="deg"></td>
+		</tr>
+		<tr>
+			<td>speed</td>
+			<td> </td>
+			<td id="speed"></td>
+		</tr>
+		
+		</table>
+				
+		</td>
+	</tr>
+
+	
+	</table>
+	
+	
+	<BR>
+	<hr>
+	</div>
+</center>	
+	
+ </body>
+</html>
