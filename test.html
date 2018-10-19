@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+   
+}
+
+td, th {
+  
+    text-align: left;
+    padding: 2px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<title>Weather</title>
+
+</head>
+
+
+<body>
+<div id="weather">
+
+<table>
+<tr>
+<td><strong><span id="city"></strong></td>
+<td> <font size="" color="#660033"><em><strong><span id="temperature"></strong></em> </font></td>
+<td><span id="weatherIcon"> </td>
+</tr>
+</table>
+</div>
+
+<script>
+var pullRequest=new XMLHttpRequest();
+pullRequest.open("GET","http://api.openweathermap.org/data/2.5/forecast?q=Rancho%20cordova&appid=8b498d45e1ad178dc3243dc536d9ee0c", false);
+pullRequest.send(null);
+var weatheResponse = JSON.parse(pullRequest.response);
+console.log(weatheResponse);
+
+//city value or data
+var cityresp = weatheResponse.city.name;
+
+//column1 values or data
+var tempresp = Math.floor(weatheResponse.list[0].main.temp * 9/5 - 459.67) + " F";
+
+var weatherIcon= "<input type='image' src='http://openweathermap.org/img/w/"+weatheResponse.list[0].weather[0].icon+ ".png'>";
+
+
+
+function displayWeather(id, res) {
+
+document.getElementById(id).innerHTML=res;
+console.log(id+" : "+res);
+}
+
+displayWeather("city", cityresp);
+displayWeather("temperature",tempresp);
+displayWeather("weatherIcon", weatherIcon);
+
+
+
+</script>
+
+</body>
+
+</html>
